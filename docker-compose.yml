@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  web:
+    build: . 
+    ports:
+        - 80:80
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    image: mysql/mysql-server:5.7.37
+    environment:
+      MYSQL_DATABASE: wizmall
+      MYSQL_USER: wizmall
+      MYSQL_PASSWORD: wizmall
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
