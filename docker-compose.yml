@@ -10,11 +10,12 @@ services:
       - db
 
   db:
-    image: mysql/mysql-server:5.7.37
+    image: grugnog/mysql-5.1:latest
     environment:
       MYSQL_DATABASE: wizmall
       MYSQL_USER: wizmall
       MYSQL_PASSWORD: wizmall
+      MYSQL_ROOT_PASSWORD: root
     restart: always
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
